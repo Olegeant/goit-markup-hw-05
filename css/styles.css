@@ -5,6 +5,9 @@
   --pale-bg-color: #f5f4fa;
   --hero-bg-color: #c4c4c4;
   --overlay-shading-color: rgba(47, 48, 58, 0.4);
+  --overlay-text-color: rgba(47, 48, 58, 0.8);
+  --overlay-portfolio-color: rgba(33, 150, 243, 0.9);
+  --overlay-backdrop: rgba(0, 0, 0, 0.2);
   --btn-bg-color: #f5f4fa;
   --primary-text-color: #757575;
   --inverse-text-color: #ffffff;
@@ -56,6 +59,9 @@ body {
   height: 44px;
   width: 44px;
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .visually-hidden {
@@ -136,6 +142,8 @@ footer .logo {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header .contact-link {
@@ -150,6 +158,8 @@ footer .logo {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header .link-icon {
@@ -177,7 +187,20 @@ footer .logo {
 } */
 
 .nav-link.current {
+  position: relative;
   color: var(--accent-color);
+}
+
+.nav-link.current::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: -1px;
+
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 
 .nav-link:hover,
@@ -444,6 +467,34 @@ footer .logo {
   margin-right: 30px;
 }
 
+.business-thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.title-overlay {
+  position: absolute;
+  width: 100%;
+  padding: 27px 0;
+  bottom: 0;
+
+  background-color: var(--overlay-text-color);
+}
+
+.business-title {
+  margin: 0;
+
+  color: var(--inverse-text-color);
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 /* Секция Наша команда */
 
 .section.team {
@@ -545,6 +596,9 @@ footer .logo {
   color: var(--icon-color);
 
   outline-color: var(--accent-color);
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-list .link-icon {
@@ -584,6 +638,10 @@ footer .logo {
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.03em;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-container .item:not(:last-child) {
@@ -623,11 +681,18 @@ footer .logo {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.work-link:hover .works-overlay,
+.work-link:focus .works-overlay {
+  transform: translateY(-100%);
+}
+
 .work-link {
   display: block;
   text-decoration: none;
   outline: none;
   cursor: pointer;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .works-samples .photo {
@@ -662,4 +727,83 @@ footer .logo {
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.03em;
+}
+
+.works-thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.works-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+
+  padding: 0 24px;
+
+  background-color: var(--overlay-portfolio-color);
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-details {
+  padding: 0;
+
+  color: var(--inverse-text-color);
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+}
+
+/* Модальное окно */
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+  background-color: var(--overlay-backdrop);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.backdrop.is-hidden .modal {
+  transform: scale(1.1) translate(-50%, -50%);
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  left: 50%;
+  top: 50%;
+
+  background-color: var(--main-bg-color);
+
+  transform: scale(1) translate(-50%, -50%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 30px;
+  width: 30px;
 }

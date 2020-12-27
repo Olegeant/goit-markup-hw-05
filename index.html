@@ -64,7 +64,9 @@
           <div class="title-container">
             <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
           </div>
-          <button class="hero-button" type="button">Заказать услугу</button>
+          <button class="hero-button" type="button" data-modal-open>
+            Заказать услугу
+          </button>
         </div>
       </section>
 
@@ -123,28 +125,43 @@
           <h2 class="section-title">Чем мы занимаемся</h2>
           <ul class="business-items list">
             <li class="item">
-              <img
-                class="photo"
-                src="./images/img-our-business1.jpg"
-                alt="Разработчик десктопных приложений за работой"
-                width="370"
-              />
+              <div class="business-thumb">
+                <img
+                  class="photo"
+                  src="./images/img-our-business1.jpg"
+                  alt="Разработчик десктопных приложений за работой"
+                  width="370"
+                />
+                <div class="title-overlay">
+                  <p class="business-title">Десктопные приложения</p>
+                </div>
+              </div>
             </li>
             <li class="item">
-              <img
-                class="photo"
-                src="./images/img-our-business2.jpg"
-                alt="Разработчик мобильных приложений за работой"
-                width="370"
-              />
+              <div class="business-thumb">
+                <img
+                  class="photo"
+                  src="./images/img-our-business2.jpg"
+                  alt="Разработчик мобильных приложений за работой"
+                  width="370"
+                />
+                <div class="title-overlay">
+                  <p class="business-title">Мобильные приложения</p>
+                </div>
+              </div>
             </li>
             <li class="item">
-              <img
-                class="photo"
-                src="./images/img-our-business3.jpg"
-                alt="Дизайнер за работой"
-                width="370"
-              />
+              <div class="business-thumb">
+                <img
+                  class="photo"
+                  src="./images/img-our-business3.jpg"
+                  alt="Дизайнер за работой"
+                  width="370"
+                />
+                <div class="title-overlay">
+                  <p class="business-title">Дизайнерские решения</p>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -427,5 +444,13 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="modal-close-btn" type="button" data-modal-close>
+          x
+        </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
